@@ -2,6 +2,7 @@ fun main(args: Array<String>) {
     val r1 = Recipe("Thai Curry", "Chicken", false)
     val r2 = Recipe(title = "Thai Curry", mainIngredient = "Chicken", false)
     val r3 = r1.copy(title = "Chicken Bhuna")
+    //set named property as wish
     val r4 = Recipe(mainIngredient="beef")
 
     println("r1 hash code: ${r1.hashCode()}")
