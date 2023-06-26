@@ -1,5 +1,13 @@
 fun main(args: Array<String>) {
+    /*
+     * Default parameter values
+     * there are two main ways of calling it: by passing values in order of declaration, and by using named arguments.
+     * named argument:
+     * lets you explicitly state which property should be assigned which value
+     * without having to stick to the order in which properties are defined.
+     */
     val r1 = Recipe("Thai Curry", "Chicken", false)
+    //named argument
     val r2 = Recipe(title = "Thai Curry", mainIngredient = "Chicken", false)
     val r3 = r1.copy(title = "Chicken Bhuna")
     //set named property as wish
