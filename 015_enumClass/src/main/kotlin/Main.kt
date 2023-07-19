@@ -36,6 +36,8 @@ fun main(args: Array<String>) {
     for (day in Day2.values())
         println("[${day.ordinal}] -> ${day.name} (${day.dayOfWeek}^ day of the week)(printName:${day.printableName}) call:${day.customToString()}")
 
+    println(Day2.FRIDAY.customToString())
+
     var selectedBandMember: BandMember
     selectedBandMember = BandMember.JERRY
     println(selectedBandMember.instrument)
