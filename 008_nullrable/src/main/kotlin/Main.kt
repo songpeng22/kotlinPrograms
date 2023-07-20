@@ -1,4 +1,9 @@
 fun main(args: Array<String>) {
+    //nullable String vs String -> convert nullable to normal
+    val nullableString:String? = "not null"
+    val normalString:String = nullableString ?: "null"
+    println(normalString)
+
     //judge null with if
     var w: Wolf? = Wolf()
     if (w != null) {
