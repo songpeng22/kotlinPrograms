@@ -2,7 +2,7 @@ fun main(args: Array<String>) {
     //function takes one line
     singleLineFunction()
     twoLineFunction()
-    threeLineFunction()
+    threeLineFunction(2)
     //for loop
     println("for loop 1..3:")
     for(i in 1..3) println(i)
@@ -32,8 +32,8 @@ fun main(args: Array<String>) {
 fun singleLineFunction() = println("this function takes one line.")
 fun twoLineFunction()
     = println("this function takes two line.")
-fun threeLineFunction(){
-    println("this function takes three line.")
+fun threeLineFunction(value:Int){
+    require(value >= 0) { "Count must be non-negative, was $value" }
 }
 
 fun getGameChoice(optionsParam: Array<String>) =
