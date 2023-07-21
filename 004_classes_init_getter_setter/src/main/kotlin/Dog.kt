@@ -1,6 +1,6 @@
-class Dog(val name: String,
-          weight_param: Int,
-          breed_param: String) {
+class Dog(val name: String,     //define property -> generate getter and setter
+          weight_param: Int,    //plain old parameter -> immutable, can't reassign a value
+          breed_param: String) {//plain old parameter -> immutable, can't reassign a value
     init {
         print("init: ") //print do not generate a new line.
         println("Dog $name has been created. ")
@@ -22,5 +22,12 @@ class Dog(val name: String,
 
     fun bark() {
         println(if (weight < 20) "Yip!" else "Woof!")
+    }
+}
+
+class Test{
+    constructor(value:Int){
+        require(value >= 0) { "Count must be non-negative, was $value" }
+        println("test::constructor() is called")
     }
 }
