@@ -18,4 +18,13 @@ fun main(args: Array<String>) {
             item.eat()
         }
     }
+
+    println("add class with same interface into one list:")
+    val roams1:List<Roamable> = listOf(Hippo(), Wolf(), Vehicle())
+    for (item in roams1) {
+        item.roam()
+        if (item is Animal) {
+            item.eat()
+        }
+    }
 }

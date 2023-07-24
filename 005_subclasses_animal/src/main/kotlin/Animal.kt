@@ -29,7 +29,7 @@ class Hippo: Animal() {
     }
 }
 
-open class Canine: Animal() {
+open class Canine: Animal() { //Canine -> 犬科的
     override fun roam() {
         println("The Canine is roaming")
     }
