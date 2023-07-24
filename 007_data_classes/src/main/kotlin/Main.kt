@@ -26,11 +26,13 @@ fun main(args: Array<String>) {
     println("r1 == r3? ${r1 == r3}")
 
     //define multiple variables and assign values according constructor property sequence
-    val (title, mainIngredient, vegetarian, difficulty) = r1
+    val (title, mainIngredient, vegetarian, difficulty) = r1 //destructure
     println("title is $title and vegetarian is $vegetarian")
 
+    //only main constructor is called
     val m1 = Mushroom(6, false)
     println("m1 size is ${m1.size} and isMagic is ${m1.isMagic}")
+    //second constructor is called, then call primary constructor
     val m2 = Mushroom(true)
     println("m2 size is ${m2.size} and isMagic is ${m2.isMagic}")
     //
