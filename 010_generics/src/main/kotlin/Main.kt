@@ -56,4 +56,9 @@ fun main(args: Array<String>) {
     println("\nstring -> enum -> type begin:")
     val enumValue: FieldDataEx? = FieldDataEx from "31".toInt()
     h2.getType(enumValue)?.tell()
+    //
+    val enumValueUnknown: FieldDataEx? = FieldDataEx from "3111".toInt()
+    println("enumValueUnknown:${enumValueUnknown}")
+    val normlFieldType:FieldType = h2.getType(enumValueUnknown) ?: FieldType("","")
+    normlFieldType.tell()
 }

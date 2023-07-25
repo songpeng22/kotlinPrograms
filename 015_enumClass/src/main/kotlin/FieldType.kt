@@ -320,6 +320,12 @@ enum class FieldType(
     ELF_FIELD_WEIGHT_TEXT(25);
 
     companion object {
+        //Solution 1
         infix fun from(value: Int): FieldType? = FieldType.values().firstOrNull { it.id == value }
+        //Solution 2
+        private val map = FieldType.values().associateBy { it.id }
+        infix fun fromMap(value: Int) = map[value]
+        //Solution 3
+        operator fun get(value: Int) = map[value]
     }
 }

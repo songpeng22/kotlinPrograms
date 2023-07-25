@@ -86,12 +86,43 @@ fun main(args: Array<String>) {
     val myIntValue = MyEnum.B.toInt()
     println("Enum to Int : " + myIntValue)
 
+    //by map
+    val searchOne = NumberV2 from 1
+    println("searchOne:${searchOne}")
+
     //string to enum
     //enum to string
+    //Solution 1
+    println("\nFieldType::Solution 1:")
     val enumValue: FieldType? = FieldType from "31".toInt()
     println("string to Enum : " + enumValue)
-    val intValue = FieldType.ELF_FIELD_SCALE_NUMBER.id
+    val intValue = FieldType.ELF_FIELD_CODE_01.id
     println("Enum to Int : " + intValue)
-    val strValue = FieldType.ELF_FIELD_SCALE_NUMBER.id.toString()
+    val strValue = FieldType.ELF_FIELD_CODE_01.id.toString()
     println("Enum to String : " + strValue)
+
+    //Solution 2
+    println("\nFieldType::Solution 2:")
+    val enumValue2 = FieldType fromMap "31".toInt()
+    println("string to Enum : " + enumValue2)
+    val intValue2 = FieldType.ELF_FIELD_CODE_01.id
+    println("Enum to Int : " + intValue2)
+
+    //Solution 3
+    println("\nFieldType::Solution 3:")
+    val enumValue3 = FieldType["31".toInt()]
+    println("string to Enum : " + enumValue3)
+    val intValue3 = FieldType.ELF_FIELD_CODE_01.id
+    println("Enum to Int : " + intValue3)
+
+    //Solution 4
+    println("\nFieldType::Solution 4:")
+    val enumValue4 = NumberV2 from 3
+    println("enumValue4:${enumValue4}")
+
+    //Solution 5
+    println("\nFieldType::Solution 5:")
+    val enumValue5 = NumberV4::value findBy 1
+    println("enumValue5:${enumValue5}")
+
 }

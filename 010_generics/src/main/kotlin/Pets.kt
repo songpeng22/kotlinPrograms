@@ -85,6 +85,10 @@ class ArticleTextFieldType(id:String = "73",type:String = "4") : FieldType(id,ty
 
 class LabelHandler<T,R:FieldType>{
     val typesMap: MutableMap<T, R> = mutableMapOf()
+
+    init {
+
+    }
     fun addTypeMap(t: T, r:R) {
         typesMap.put(t, r)
     }
