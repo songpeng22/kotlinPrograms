@@ -49,6 +49,20 @@ enum class BandMember(val instrument: String) {
     PHIL("bass")
 }
 
+enum class MyEnum {
+    A, B, C
+}
+
+//Int to Enum
+inline fun <reified T : Enum<T>> Int.toEnum(): T? {
+    return enumValues<T>().firstOrNull { it.ordinal == this }
+}
+
+//Enum to Int
+inline fun <reified T : Enum<T>> T.toInt(): Int {
+    return this.ordinal
+}
+
 fun main(args: Array<String>) {
     for (day in Day.values())
         println("[${day.ordinal}] -> ${day.name} (${day.dayOfWeek}^ day of the week)")
@@ -64,4 +78,20 @@ fun main(args: Array<String>) {
     var selectedBandMember: BandMember
     selectedBandMember = BandMember.JERRY
     println(selectedBandMember.instrument)
+
+    //int to enum
+    //enum to int
+    val myEnumValue: MyEnum? = 1.toEnum<MyEnum>()
+    println("Int to Enum : " + myEnumValue)
+    val myIntValue = MyEnum.B.toInt()
+    println("Enum to Int : " + myIntValue)
+
+    //string to enum
+    //enum to string
+    val enumValue: FieldType? = FieldType from "31".toInt()
+    println("string to Enum : " + enumValue)
+    val intValue = FieldType.ELF_FIELD_SCALE_NUMBER.id
+    println("Enum to Int : " + intValue)
+    val strValue = FieldType.ELF_FIELD_SCALE_NUMBER.id.toString()
+    println("Enum to String : " + strValue)
 }

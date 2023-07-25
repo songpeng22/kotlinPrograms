@@ -34,6 +34,7 @@ fun main(args: Array<String>) {
     petRetailer.sell()
 
     //Bizerba Label and field
+    println("\n(id,type) convert to type begin:")
     val h = LabelHandler<FieldData,FieldType>()
     val ft = FieldData("32","6")
     h.addTypeMap(FieldData("31","6"),CodeFieldType())
@@ -42,4 +43,17 @@ fun main(args: Array<String>) {
     h.addTypeMap(FieldData("131","4"),FixedTextFieldType())
     h.addTypeMap(FieldData("73", "4"),ArticleTextFieldType())
     h.getType(ft)?.tell()
+    //
+    println("\nenum convert to type begin:")
+    val h2 = LabelHandler<FieldDataEx,FieldType>()
+    h2.addTypeMap(FieldDataEx.ELF_FIELD_CODE_01,CodeFieldType())
+    h2.addTypeMap(FieldDataEx.ELF_FIELD_DOD_BAR_CODE,FieldType("236","6"))
+    h2.addTypeMap(FieldDataEx.ELF_FIELD_ARTICLE_TEXT,ArticleTextFieldType())
+    h2.getType(FieldDataEx.ELF_FIELD_DOD_BAR_CODE)?.tell()
+    h2.getType(FieldDataEx.ELF_FIELD_ARTICLE_TEXT)?.tell()
+    //string or int -> enum class value
+    //enum class value -> getType
+    println("\nstring -> enum -> type begin:")
+    val enumValue: FieldDataEx? = FieldDataEx from "31".toInt()
+    h2.getType(enumValue)?.tell()
 }
