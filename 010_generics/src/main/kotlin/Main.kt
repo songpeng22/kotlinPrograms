@@ -32,4 +32,14 @@ fun main(args: Array<String>) {
     val catRetailer: Retailer<Cat> = CatRetailer()
     val petRetailer: Retailer<Pet> = CatRetailer()
     petRetailer.sell()
+
+    //Bizerba Label and field
+    val h = LabelHandler<FieldData,FieldType>()
+    val ft = FieldData("32","6")
+    h.addTypeMap(FieldData("31","6"),CodeFieldType())
+    h.addTypeMap(FieldData("32","6"),CodeFieldType())
+    h.addTypeMap(FieldData("236","6"),FieldType("236","6"))
+    h.addTypeMap(FieldData("131","4"),FixedTextFieldType())
+    h.addTypeMap(FieldData("73", "4"),ArticleTextFieldType())
+    h.getType(ft)?.tell()
 }

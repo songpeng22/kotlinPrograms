@@ -51,3 +51,50 @@ class FishRetailer : Retailer<Fish> {
         return Fish("")
     }
 }
+
+data class FieldData(var id:String,var type:String) {
+    fun tell(){
+        println("this is normal FieldType.")
+    }
+}
+
+open class FieldType(open var id:String,open var type:String){
+    open fun tell(){
+        println("this is normal FieldType.")
+    }
+}
+
+class CodeFieldType(id:String = "31",type:String = "6") : FieldType(id,type)
+{
+    override fun tell(){
+        println("this is Code.")
+    }
+}
+
+class FixedTextFieldType(id:String = "131",type:String = "4") : FieldType(id,type){
+    override fun tell(){
+        println("this is Fixed Text.")
+    }
+}
+
+class ArticleTextFieldType(id:String = "73",type:String = "4") : FieldType(id,type){
+    override fun tell(){
+        println("this is Fixed Text")
+    }
+}
+
+class LabelHandler<T:FieldData,R:FieldType>{
+    val typesMap: MutableMap<T, R> = mutableMapOf()
+    fun addTypeMap(t: T, r:R) {
+        typesMap.put(t, r)
+    }
+    fun getType(t: T?):R? {
+        for ((tInner, rInner) in typesMap) {
+            if(t == tInner){
+                println("matched:${tInner}:${rInner}")
+                return rInner
+            }
+        }
+        return null
+    }
+}
