@@ -27,14 +27,15 @@ fun main(args: Array<String>) {
     //filter
     println("\nfilter:")
     val vegetables = groceries.filter { it.category == "Vegetable" }
-    println("vegetables: $vegetables")
+    println("vegetables: $vegetables,type:${vegetables::class.simpleName}")
     val notFrozen = groceries.filterNot { it.category == "Frozen" }
     println("notFrozen: $notFrozen")
 
-    //create a list with same elements
+    //create a list with same elements:[Tomatoes, Mushrooms, Bagels, Olive oil, Ice cream]
+    //its type is ArrayList
     println("\nmap:")
     val groceryNames = groceries.map { it.name }
-    println("groceryNames: $groceryNames")
+    println("groceryNames: $groceryNames, type:${groceryNames::class.simpleName}")
     //reate a List of each unitPrice multiplied by 0.5 using the following code
     val halfUnitPrice = groceries.map { it.unitPrice * 0.5 }
     println("halfUnitPrice: $halfUnitPrice")
