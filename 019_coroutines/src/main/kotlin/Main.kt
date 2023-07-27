@@ -1,8 +1,14 @@
 import kotlinx.coroutines.*
 
 fun main(args: Array<String>) {
+    //first channel
+    println("1st channel:")
+    runBlocking { // this: CoroutineScope
+        doChannel()
+    }
+
     //first coroutines
-    println("1st coroutines:")
+    println("\n1st coroutines:")
     firstCoroutines()
     //2nd coroutines - suspend function
     println("\n2nd coroutines:")
