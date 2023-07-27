@@ -22,6 +22,13 @@ object DuckManager {
     }
 }
 
+//object inside class - class factory
+class Duck {
+    object DuckFactory {
+        fun create(): Duck = Duck()
+    }
+}
+
 //Companion Objects - like a static function
 class BigBen {                                  //1
     companion object Bonger {                   //2
@@ -33,12 +40,27 @@ class BigBen {                                  //1
     }
 }
 
+/*
+ * works as anonymous inner class in java
+ *
+    window.addMouseListener(object : MouseAdapter() {
+        override fun mouseClicked(e: MouseEvent) {
+            //Code that runs when the mouse is clicked
+        }
+        override fun mouseReleased(e: MouseEvent) {
+            //Code that runs when the mouse is released
+        }
+    })
+ * */
+
 fun main(args: Array<String>) {
     //object expression
     rentPrice(10, 2, 1)
     //object declaration
     DuckManager.herdDucks();
-    //Companion Objects
+    //object inside class - duck factory product duck
+    val newDuck = Duck.DuckFactory.create()
+    //Companion Objects - object name is not mentioned
     BigBen.getBongs(12)
 
 }
