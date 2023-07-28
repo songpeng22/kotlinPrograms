@@ -52,9 +52,19 @@ class FishRetailer : Retailer<Fish> {
     }
 }
 
-data class FieldData(var id:String,var type:String) {
+data class FieldData(var id:String = "0",var type:String = "0") {
     fun tell(){
         println("this is normal FieldType.")
+    }
+}
+
+class test{
+    constructor(){
+        println("test is constructed().")
+    }
+
+    fun tell(){
+        println("this is test.")
     }
 }
 
@@ -83,13 +93,10 @@ class ArticleTextFieldType(id:String = "73",type:String = "4") : FieldType(id,ty
     }
 }
 
-class LabelHandler<T,R:FieldType>{
+class TypeMapper<T,R>{
     val typesMap: MutableMap<T, R> = mutableMapOf()
 
-    init {
-
-    }
-    fun addTypeMap(t: T, r:R) {
+    fun map(t: T, r:R) {
         typesMap.put(t, r)
     }
     fun getType(t: T?):R? {

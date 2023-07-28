@@ -11,7 +11,7 @@ repositories {
 }
 
 dependencies {
-    //implementation (kotlin("reflect"))
+    implementation (kotlin("reflect"))
     testImplementation(kotlin("test"))
 }
 

@@ -1,3 +1,6 @@
+import kotlin.reflect.KClass
+import kotlin.reflect.full.createInstance
+
 fun main(args: Array<String>) {
     val catFuzz = Cat("Fuzz Lightyear")
     val catKatsu = Cat("Katsu")
@@ -33,22 +36,28 @@ fun main(args: Array<String>) {
     val petRetailer: Retailer<Pet> = CatRetailer()
     petRetailer.sell()
 
-    //Bizerba Label and field
+    /*
+     * type mapping
+     * Bizerba Label and field
+     * */
     println("\n(id,type) convert to type begin:")
-    val h = LabelHandler<FieldData,FieldType>()
+    //map type to type
+    val h = TypeMapper<FieldData,FieldType>()
     val ft = FieldData("32","6")
-    h.addTypeMap(FieldData("31","6"),CodeFieldType())
-    h.addTypeMap(FieldData("32","6"),CodeFieldType())
-    h.addTypeMap(FieldData("236","6"),FieldType("236","6"))
-    h.addTypeMap(FieldData("131","4"),FixedTextFieldType())
-    h.addTypeMap(FieldData("73", "4"),ArticleTextFieldType())
+    h.map(FieldData("31","6"),CodeFieldType())
+    h.map(FieldData("32","6"),CodeFieldType())
+    h.map(FieldData("236","6"),FieldType("236","6"))
+    h.map(FieldData("131","4"),FixedTextFieldType())
+    h.map(FieldData("73", "4"),ArticleTextFieldType())
     h.getType(ft)?.tell()
+
     //
     println("\nenum convert to type begin:")
-    val h2 = LabelHandler<FieldDataEx,FieldType>()
-    h2.addTypeMap(FieldDataEx.ELF_FIELD_CODE_01,CodeFieldType())
-    h2.addTypeMap(FieldDataEx.ELF_FIELD_DOD_BAR_CODE,FieldType("236","6"))
-    h2.addTypeMap(FieldDataEx.ELF_FIELD_ARTICLE_TEXT,ArticleTextFieldType())
+    //map enum with type
+    val h2 = TypeMapper<FieldDataEx,FieldType>()
+    h2.map(FieldDataEx.ELF_FIELD_CODE_01,CodeFieldType())
+    h2.map(FieldDataEx.ELF_FIELD_DOD_BAR_CODE,FieldType("236","6"))
+    h2.map(FieldDataEx.ELF_FIELD_ARTICLE_TEXT,ArticleTextFieldType())
     h2.getType(FieldDataEx.ELF_FIELD_DOD_BAR_CODE)?.tell()
     h2.getType(FieldDataEx.ELF_FIELD_ARTICLE_TEXT)?.tell()
     //string or int -> enum class value
@@ -61,4 +70,24 @@ fun main(args: Array<String>) {
     println("enumValueUnknown:${enumValueUnknown}")
     val normlFieldType:FieldType = h2.getType(enumValueUnknown) ?: FieldType("","")
     normlFieldType.tell()
+
+    //map type to KClass name -> this is costly, do not many constructor
+    println("\nmap type to KClass name begin:")
+    val h3 = TypeMapper<FieldData, String?>()
+    val ft3 = FieldData("131","4")
+    h3.map(FieldData("31","6"),CodeFieldType::class.simpleName)
+    h3.map(FieldData("32","6"),CodeFieldType::class.simpleName)
+    h3.map(FieldData("236","6"),FieldType::class.simpleName)
+    h3.map(FieldData("131","4"),FixedTextFieldType::class.simpleName)
+    h3.map(FieldData("73", "4"),ArticleTextFieldType::class.simpleName)
+    val fieldType = Class.forName(h3.getType(ft3)).kotlin.createInstance() as FieldType
+    fieldType.tell()
+
+    //generics with KClass
+    val testList = mutableListOf<KClass<test>>()
+    testList.add(test::class)
+    testList.forEach{
+        println(it.simpleName)
+
+    }
 }
