@@ -60,16 +60,15 @@ fun main(args: Array<String>) {
         }
     }
 
-
-
-//    var patternOfBody = Regex("body.*\\{([^}]*?)\\}")
-//    var matchResult:MatchResult? = patternOfBody.find(str)
-//    var lastOfBody = matchResult?.range?.last ?: -1
-//    if(lastOfBody != -1){
-//        matchResult = patternOfBody.find(str)
-//        matchResult?.value?.printVariabel("matched value")
-//        matchResult?.range.toString().printVariabel("matched range")
-//    }
+    //StringBuilder
+    println("\nStringBuilder:")
+    val stringBuilder = StringBuilder()
+    stringBuilder.append("123456")
+    var string:String = stringBuilder.toString()
+    string.printVariabel("string")
+    stringBuilder.delete(string.indexOf("3"),string.indexOf("5") + 1)
+    string = stringBuilder.toString()
+    string.printVariabel("string")
 
 
 
