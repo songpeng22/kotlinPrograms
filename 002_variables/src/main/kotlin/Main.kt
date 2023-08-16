@@ -23,6 +23,9 @@ fun main(args: Array<String>) {
     //explicityly define a variable's type
     var b:Int = 2
     println("b is:${b}")
+    //define multiple variable
+    val (a1,b1) = arrayOf("name","TAG")
+    println("a1 is:${a1},b1 is:${b1}.")
     //convert value in order to assign it to another variable type
     var c = 5
     var d: Long = c.toLong()
