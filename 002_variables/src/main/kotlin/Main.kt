@@ -26,6 +26,9 @@ fun main(args: Array<String>) {
     //define multiple variable
     val (a1,b1) = arrayOf("name","TAG")
     println("a1 is:${a1},b1 is:${b1}.")
+    //place holder in destruction
+    val (_,_,c1) = arrayOf("name A","name B","name C")
+    println("c1 is:${c1}")
     //convert value in order to assign it to another variable type
     var c = 5
     var d: Long = c.toLong()
