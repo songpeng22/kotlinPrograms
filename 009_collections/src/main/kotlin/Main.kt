@@ -3,6 +3,15 @@ data class Recipe(var name: String)
 fun main(args: Array<String>) {
     var mShoppingList = mutableListOf("Tea", "Eggs", "Milk")
     println("mShoppingList original: $mShoppingList")
+    mShoppingList.add("tomato")
+    mShoppingList.forEachIndexed{ index,element ->
+        println("index${index},element:${element}")
+    }
+    var item =  mShoppingList.removeAt(0)
+    println("item:${item}")
+    for( (index,element) in mShoppingList.withIndex() ){
+        println("index${index},element:${element}")
+    }
 
     //add another list to a list
     val extraShopping = listOf("Cookies", "Sugar", "Eggs")
