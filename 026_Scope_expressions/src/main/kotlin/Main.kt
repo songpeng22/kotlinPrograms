@@ -34,14 +34,15 @@ fun main(args: Array<String>) {
 
     //Scope - with -> change properties like apply
     println("\nscope with:")
-    data class Student(var name: String, var tutorial : String)
+    data class Student(var name: String = "No Name", var tutorial : String)
     var student = Student("Anupam", "Kotlin")
     var xyz = with(student)
     {
-        name = "No Name"
+        name = "jack"
         tutorial = "Kotlin tutorials"
         val xyz = "End of tutorial"
         xyz
     }
+    println(student)
     println(xyz) //End of tutorial
 }
