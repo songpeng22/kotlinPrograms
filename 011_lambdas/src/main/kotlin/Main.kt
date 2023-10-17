@@ -60,8 +60,17 @@ fun main(args: Array<String>) {
     println("Pass 12 to addSeven: ${addSeven(12)}")
 
     //no return value
+    println("\nno return value:")
     val myLambda: () -> Unit = { println("Hi!") }
     myLambda()
+    //return value
+    println("\nreturn value:")
+    val myLambdasWithReturn: () -> String? = {
+        "fuck you"
+    }
+    val ret:String? = myLambdasWithReturn()
+    println("ret:${ret}")
+
 
     /*
      * pass lambdas to function
